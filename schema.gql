@@ -1,0 +1,49 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+directive @upper on FIELD_DEFINITION
+
+"""comment"""
+type Comment {
+  comId: String!
+  title: String!
+  comment: String
+  user: String!
+  createdAt: Date!
+}
+
+"""userInOut"""
+type UserModel {
+  userId: ID!
+  chat: String!
+  user: String!
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+"""Date custom scalar type"""
+scalar DateUser
+
+type Query {
+  comment(comId: String!): Comment!
+  allComments: [Comment!]!
+}
+
+type Mutation {
+  addComment(newCommentData: NewCommentInput!): Comment!
+  deleteComment(comId: String!): Boolean!
+  userIn(newUser: String!): UserModel!
+  userOut(userId: String!): Boolean!
+}
+
+input NewCommentInput {
+  user: String!
+  comment: String
+}
+
+type Subscription {
+  commentAdded: [Comment!]!
+  userChek: [UserModel!]!
+}
